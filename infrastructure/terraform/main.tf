@@ -5,6 +5,12 @@ terraform {
       version = "=2.71.0"
     }
   }
+  backend "remote" {
+    resource_group_name  = "IAC_Production"
+    storage_account_name = "iacteam3 "
+    container_name       = "credentials-storage"
+    key                  = "prod.terraform.tfstate"
+  }
 }
 
 # Configure the Microsoft Azure Provider
