@@ -1,7 +1,7 @@
 pipeline{
     agent any
     tools {
-        terraform "terraform-11"
+        Terraform "terraform-11"
     }
     environment {
         TF_HOME = tool('terraform')
