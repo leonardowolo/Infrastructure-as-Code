@@ -8,14 +8,13 @@ pipeline{
         TF_IN_AUTOMATION = "true"
         PATH = "$TF_HOME:$PATH"
     }
+
     stages {
-
         stage('Terraform Init'){
-
             steps {
                     ansiColor('xterm') {
                     withCredentials([azureServicePrincipal(
-                    credentialsId: '59a0122f-d689-4016-a98b-e0b4fc5423f2',
+                    credentialsId: '918a1b02-045f-48e7-bb01-aae91f1598d2',
                     subscriptionIdVariable: 'ARM_SUBSCRIPTION_ID',
                     clientIdVariable: 'ARM_CLIENT_ID',
                     clientSecretVariable: 'ARM_CLIENT_SECRET',
@@ -32,11 +31,10 @@ pipeline{
         }
 
         stage('Terraform Validate'){
-
             steps {
                     ansiColor('xterm') {
                     withCredentials([azureServicePrincipal(
-                    credentialsId: '59a0122f-d689-4016-a98b-e0b4fc5423f2',
+                    credentialsId: '918a1b02-045f-48e7-bb01-aae91f1598d2',
                     subscriptionIdVariable: 'ARM_SUBSCRIPTION_ID',
                     clientIdVariable: 'ARM_CLIENT_ID',
                     clientSecretVariable: 'ARM_CLIENT_SECRET',
@@ -55,7 +53,7 @@ pipeline{
             steps {
                     ansiColor('xterm') {
                     withCredentials([azureServicePrincipal(
-                    credentialsId: '59a0122f-d689-4016-a98b-e0b4fc5423f2',
+                    credentialsId: '918a1b02-045f-48e7-bb01-aae91f1598d2',
                     subscriptionIdVariable: 'ARM_SUBSCRIPTION_ID',
                     clientIdVariable: 'ARM_CLIENT_ID',
                     clientSecretVariable: 'ARM_CLIENT_SECRET',
@@ -85,7 +83,7 @@ pipeline{
             steps {
                     ansiColor('xterm') {
                     withCredentials([azureServicePrincipal(
-                    credentialsId: '59a0122f-d689-4016-a98b-e0b4fc5423f2',
+                    credentialsId: '918a1b02-045f-48e7-bb01-aae91f1598d2',
                     subscriptionIdVariable: 'ARM_SUBSCRIPTION_ID',
                     clientIdVariable: 'ARM_CLIENT_ID',
                     clientSecretVariable: 'ARM_CLIENT_SECRET',
