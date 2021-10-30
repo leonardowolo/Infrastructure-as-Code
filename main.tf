@@ -63,7 +63,7 @@ resource "azurerm_subnet" "iSubnet" {
 
 # Configure Microsoft Azure Public Ip
 resource "azurerm_public_ip" "pIP" {
-  name                = ""
+  name                = "public"
   resource_group_name = azurerm_resource_group.IAC_Production.name
   location            = azurerm_resource_group.IAC_Production.location
   allocation_method   = "Dynamic"
@@ -106,7 +106,7 @@ resource "azurerm_network_security_group" "webserver" {
     protocol               = "Tcp"
     source_port_range      = "*"
     source_address_prefix  = "*"
-    destination_port_range = ["80", "8080"]
+    destination_port_range = "80"
   }
   security_rule {
     access                 = "Allow"

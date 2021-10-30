@@ -24,6 +24,7 @@ pipeline{
                         sh """
                         echo "Initialising Terraform"
                         terraform init -reconfigure -upgrade -backend-config='access_key=$ARM_ACCESS_KEY'
+                        terraform state replace-provider -auto-approve registry.terraform.io/-/vault registry.terraform.io/hashicorp/vault
                         """
                            }
                     }
