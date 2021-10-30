@@ -84,8 +84,8 @@ resource "azurerm_network_interface" "nInterface" {
 }
 
 # Configure Microsoft Azure security group
-resource "azurerm_network_security_group" "webserver" {
-  name                = "tls_webserver"
+resource "azurerm_network_security_group" "securityGroup" {
+  name                = "securityGroup"
   location            = azurerm_resource_group.IAC_Production.location
   resource_group_name = azurerm_resource_group.IAC_Production.name
   security_rule {
@@ -97,6 +97,7 @@ resource "azurerm_network_security_group" "webserver" {
     source_port_range      = "*"
     source_address_prefix  = "*"
     destination_port_range = "22"
+    destination_address_prefix = "*"
   }
   security_rule {
     access                 = "Allow"
@@ -107,6 +108,7 @@ resource "azurerm_network_security_group" "webserver" {
     source_port_range      = "*"
     source_address_prefix  = "*"
     destination_port_range = "80"
+    destination_address_prefix = "*"
   }
   security_rule {
     access                 = "Allow"
@@ -117,6 +119,7 @@ resource "azurerm_network_security_group" "webserver" {
     source_port_range      = "*"
     source_address_prefix  = "*"
     destination_port_range = "443"
+    destination_address_prefix = "*"
   }
 }
 
