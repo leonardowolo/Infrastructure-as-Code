@@ -7,7 +7,7 @@ terraform {
   }
   backend "azurerm" {
     resource_group_name  = "IAC_Production"
-    storage_account_name = "iacteam3 "
+    storage_account_name = "iacteam3"
     container_name       = "credentials-storage"
     key                  = "terraform.credentials-storage"
   }
