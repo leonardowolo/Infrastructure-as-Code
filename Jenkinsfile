@@ -19,11 +19,11 @@ pipeline{
                     clientIdVariable: 'ARM_CLIENT_ID',
                     clientSecretVariable: 'ARM_CLIENT_SECRET',
                     tenantIdVariable: 'ARM_TENANT_ID'
-                ), string(credentialsId: 'AccessKey', variable: 'ARM_ACCESS_KEY')]) {
+                ), string(credentialsId: 'access_key', variable: 'ARM_ACCESS_KEY')]) {
 
                         sh """
                         echo "Initialising Terraform"
-                        terraform init -reconfigure -upgrade -backend-config='AccessKey=$ARM_ACCESS_KEY'
+                        terraform init -reconfigure -upgrade -backend-config='access_key=$ARM_ACCESS_KEY'
                         terraform state replace-provider -auto-approve registry.terraform.io/-/vault registry.terraform.io/hashicorp/vault
                         """
                            }
@@ -40,7 +40,7 @@ pipeline{
                     clientIdVariable: 'ARM_CLIENT_ID',
                     clientSecretVariable: 'ARM_CLIENT_SECRET',
                     tenantIdVariable: 'ARM_TENANT_ID'
-                ), string(credentialsId: 'AccessKey', variable: 'ARM_ACCESS_KEY')]) {
+                ), string(credentialsId: 'access_key', variable: 'ARM_ACCESS_KEY')]) {
 
                         sh """
                         terraform validate
@@ -59,7 +59,7 @@ pipeline{
                     clientIdVariable: 'ARM_CLIENT_ID',
                     clientSecretVariable: 'ARM_CLIENT_SECRET',
                     tenantIdVariable: 'ARM_TENANT_ID'
-                ), string(credentialsId: 'AccessKey', variable: 'ARM_ACCESS_KEY')]) {
+                ), string(credentialsId: 'access_key', variable: 'ARM_ACCESS_KEY')]) {
 
                         sh """
                         echo "Creating Terraform Plan"
@@ -89,7 +89,7 @@ pipeline{
                     clientIdVariable: 'ARM_CLIENT_ID',
                     clientSecretVariable: 'ARM_CLIENT_SECRET',
                     tenantIdVariable: 'ARM_TENANT_ID'
-                ), string(credentialsId: 'AccessKey', variable: 'ARM_ACCESS_KEY')]) {
+                ), string(credentialsId: 'access_key', variable: 'ARM_ACCESS_KEY')]) {
 
                         sh """
                         echo "Applying the plan"

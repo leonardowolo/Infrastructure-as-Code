@@ -7,9 +7,9 @@ terraform {
   }
   backend "azurerm" {
     resource_group_name  = "IAC_Production"
-    storage_account_name = "iacteam3"
-    container_name       = "credentials-storage"
-    key                  = "terraform.credentials-storage"
+    storage_account_name = "productioniac"
+    container_name       = "terraform"
+    key                  = "terraform.tfstate"
   }
 }
 
