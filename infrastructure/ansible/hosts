@@ -1,0 +1,6 @@
+[webservers]
+team3-iac.westeurope.cloudapp.azure.com
+
+[webservers:vars]
+ansible_ssh_user=team3-iac
+ansible_ssh_private_key_file=/.ssh/webserver_key.pem

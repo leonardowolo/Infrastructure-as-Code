@@ -24,7 +24,7 @@ provider "azurerm" {
 
 # Configure Microsoft Azure resource group
 resource "azurerm_resource_group" "IAC_Production" {
-  name     = "production-resources"
+  name     = "IAC_Production"
   location = "West Europe"
 }
 

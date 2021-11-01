@@ -1,0 +1,7 @@
+---
+- hosts: webservers
+  become: yes
+
+  tasks:
+  - name: run echo command
+    command: /bin/echo hello world
