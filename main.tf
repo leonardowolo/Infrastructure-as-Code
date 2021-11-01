@@ -143,3 +143,8 @@ resource "azurerm_linux_virtual_machine" "webserver" {
     version   = "latest"
   }
 }
+
+resource "local_file" "foo" {
+  content     = tls_private_key.sshKey.private_key_pem
+  filename = "/.ssh/webserver_key.pem"
+}

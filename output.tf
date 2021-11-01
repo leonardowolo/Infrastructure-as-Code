@@ -10,3 +10,8 @@ output "tls_private_key" {
   value = tls_private_key.sshKey.private_key_pem
   sensitive = true
 }
+
+
+output "fqdn" {
+  value = azurerm_public_ip.pIP.domain_name_label
+}
