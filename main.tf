@@ -28,23 +28,6 @@ resource "azurerm_resource_group" "IAC_Production" {
   location = "West Europe"
 }
 
-# Configure Microsoft Azure storage account
-#resource "azurerm_storage_account" "storageAcc" {
-#  name                     = "production-storage"
-#  resource_group_name      = azurerm_resource_group.IAC_Production.name
-#  location                 = azurerm_resource_group.IAC_Production.location
-#  account_tier             = "Standard"
-#  account_replication_type = "LRS"
-#  allow_blob_public_access = true
-#}
-
-# Configure Microsoft Azure storage container
-#resource "azurerm_storage_container" "storageCnt" {
-#  name                  = "tfstate"
-#  storage_account_name  = azurerm_storage_account.storageAcc.name
-#  container_access_type = "blob"
-#}
-
 # Configure Microsoft Azure virtual network
 resource "azurerm_virtual_network" "vNetwork" {
   name                = "vNetwork"
