@@ -4,4 +4,7 @@
 
   tasks:
     - name: Update apt and install docker-ce
-      apt: update_cache=yes name=docker.io state=latest
+      apt:
+        name:
+          - docker.io
+        update_cache: yes
