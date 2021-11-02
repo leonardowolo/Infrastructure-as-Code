@@ -26,8 +26,8 @@
           database__connection__database: ghost
         url: http://localhost:8080
         restart_policy: always
-      db:
-        image: mysql:5.7
-        environment:
-          MYSQL_ROOT_PASSWORD: example
-        restart_policy: always
+      # db:
+      #   image: mysql:5.7
+      #   environment:
+      #     MYSQL_ROOT_PASSWORD: example
+      #   restart_policy: always
