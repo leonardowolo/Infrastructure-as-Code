@@ -1,0 +1,7 @@
+---
+- hosts: webservers
+  become: yes
+
+  tasks:
+    - name: Update apt and install docker-ce
+      apt: update_cache=yes name=docker-ce state=latest
