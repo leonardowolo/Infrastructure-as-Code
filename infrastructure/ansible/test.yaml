@@ -3,30 +3,30 @@
   become: yes
 
   tasks:
-    - name: Install docker.io
-      apt:
-        name:
-          - docker.io
-    - name: Install docker-compose
-      get_url:
-        url: https://github.com/docker/compose/releases/download/1.25.1-rc1/docker-compose-Linux-x86_64
-        dest: /usr/local/bin/docker-compose
-        mode: "u+x,g+x"
-    # - name: Deploy ghost stack
-    #   ghost_container:
-    #     image: ghost:4-alpine
-    #     name: ghost
-    #     ports: 8080:2368
-    #     environment:
-    #       database__client: mysql
-    #       database__connection__host: db
-    #       database__connection__user: root
-    #       database__connection__password: example
-    #       database__connection__database: ghost
-    #     url: http://localhost:8080
-    #     restart_policy: always
-    #   db:
-    #     image: mysql:5.7
-    #     environment:
-    #       MYSQL_ROOT_PASSWORD: example
-    #     restart_policy: always
+    # - name: Install docker.io
+    #   apt:
+    #     name:
+    #       - docker.io
+    # - name: Install docker-compose
+    #   get_url:
+    #     url: https://github.com/docker/compose/releases/download/1.25.1-rc1/docker-compose-Linux-x86_64
+    #     dest: /usr/local/bin/docker-compose
+    #     mode: "u+x,g+x"
+    - name: Deploy ghost stack
+      ghost_container:
+        image: ghost:4-alpine
+        name: ghost
+        ports: 8080:2368
+        environment:
+          database__client: mysql
+          database__connection__host: db
+          database__connection__user: root
+          database__connection__password: example
+          database__connection__database: ghost
+        url: http://localhost:8080
+        restart_policy: always
+      db:
+        image: mysql:5.7
+        environment:
+          MYSQL_ROOT_PASSWORD: example
+        restart_policy: always
