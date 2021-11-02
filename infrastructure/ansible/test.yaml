@@ -17,16 +17,16 @@
         image: ghost:4-alpine
         name: ghost
         ports: 8080:2368
-        environment:
+        env:
           database__client: mysql
           database__connection__host: db
           database__connection__user: root
           database__connection__password: example
           database__connection__database: ghost
         url: http://localhost:8080
-        restart_policy: always
+        state: started
       db:
         image: mysql:5.7
-        environment:
+        env:
           MYSQL_ROOT_PASSWORD: example
-        restart_policy: always
+        state: started
