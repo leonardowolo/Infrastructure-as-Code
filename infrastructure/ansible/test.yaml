@@ -23,7 +23,7 @@
           database__connection__user: root
           database__connection__password: example
           database__connection__database: ghost
-        url: http://localhost:8080
+        # url: http://localhost:8080
         state: started
       db:
         image: mysql:5.7
