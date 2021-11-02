@@ -3,8 +3,31 @@
   become: yes
 
   tasks:
-    - name: Update apt and install docker-ce
+    - name: Install python package manager
       apt:
         name:
-          - docker.io
+          - python3-pip
         update_cache: yes
+    - name: Install docker & docker-compose
+      pip:
+        name:
+          - docker
+          - docker-compose
+    - name: Deploy ghost stack
+      ghost_container:
+        image: ghost:4-alpine
+        name: ghost
+        ports: 8080:2368
+        environment:
+          database__client: mysql
+          database__connection__host: db
+          database__connection__user: root
+          database__connection__password: example
+          database__connection__database: ghost
+        url: http://localhost:8080
+        restart_policy: always
+      db:
+        image: mysql:5.7
+        environment:
+          MYSQL_ROOT_PASSWORD: example
+        restart_policy: always
