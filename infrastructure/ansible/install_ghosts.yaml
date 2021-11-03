@@ -1,0 +1,40 @@
+---
+- hosts: webservers
+
+  tasks:
+    - name: Create Ghost Network
+      community.docker.docker_network:
+        name: ghost_network
+
+    - name: Deploy Ghost App
+      community.docker.docker_containers:
+        name: ghost
+        image: ghost:4-alpine
+        ports:
+          - "80:2368"
+        networks:
+          - name: ghost_network
+        volumes:
+          - ghosts/app:/var/www/html
+        env:
+          database__client: mysql
+          database__connection__host: db
+          database__connection__user: blog-user
+          database__connection__password: example
+          database__connection__database: ghost
+        restart_policy: always
+
+    - name: Deploy Ghost Db
+      community.docker.docker_containers:
+        name: db
+        image: mysql:5.7
+        networks:
+          - name: ghost_network
+        volumes:
+          - ghosts/db:/var/lib/mysql
+        env:
+          MYSQL_RANDOM_ROOT_PASSWORD: "1"
+          MYSQL_DATABASE: ghost
+          MYSQL_USER: blog-user
+          MYSQL_PASSWORD: example
+        restart_policy: always
