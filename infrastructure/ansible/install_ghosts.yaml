@@ -11,7 +11,7 @@
         name: ghost
         image: ghost:4-alpine
         ports:
-          - "80:2368"
+          - 80:2368
         networks:
           - name: ghost_network
         volumes:
