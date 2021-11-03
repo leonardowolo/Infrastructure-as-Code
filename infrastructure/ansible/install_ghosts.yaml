@@ -7,7 +7,7 @@
         name: ghost_network
 
     - name: Deploy Ghost App
-      docker_container:
+      community.docker.docker_container:
         name: ghost
         image: ghost:4-alpine
         ports:
@@ -25,7 +25,7 @@
         restart_policy: always
 
     - name: Deploy Ghost Db
-      docker_container:
+      community.docker.docker_container:
         name: db
         image: mysql:5.7
         networks:
