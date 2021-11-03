@@ -1,49 +1,36 @@
 ---
 - hosts: webservers
-  become: yes
+  become: true
 
   tasks:
-    # Install Docker
-    # --
-    - name: install prerequisites
-      apt:
-        name:
-          - apt-transport-https
-          - ca-certificates
-          - curl
-          - gnupg-agent
-          - software-properties-common
-        update_cache: yes
+    - name: Install aptitude using apt
+      apt: name=aptitude state=latest update_cache=yes force_apt_get=yes
 
-    - name: add apt-key
+    - name: Install required system packages
+      apt: name={{ item }} state=latest update_cache=yes
+      loop: [ 'apt-transport-https', 'ca-certificates', 'curl', 'software-properties-common', 'python3-pip', 'virtualenv', 'python3-setuptools']
+
+    - name: Add Docker GPG apt Key
       apt_key:
         url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
 
-    - name: add docker repo
+    - name: Add Docker Repository
       apt_repository:
-        repo: deb https://download.docker.com/linux/ubuntu focal stable
+        repo: deb https://download.docker.com/linux/ubuntu bionic stable
+        state: present
 
-    - name: install docker
-      apt:
-        name:
-          - docker-ce
-          - docker-ce-cli
-          - containerd.io
-        update_cache: yes
+    - name: Update apt and install docker-ce
+      apt: update_cache=yes name=docker-ce state=latest
 
-    - name: add userpermissions
-      shell: "usermod -aG docker team3-iac"
-
-    # Installs Docker SDK
-    # --
-    - name: install python package manager
-      apt:
-        name:
-          - python3-pip
-
-    - name: install python sdk
-      become_user: team3-iac
+    - name: Install Docker Module for Python
       pip:
         name:
-          - docker
-          - docker-compose
+        - docker
+
+    - name: Install docker-compose
+      get_url:
+        url: https://github.com/docker/compose/releases/download/1.29.2/docker-compose-Linux-x86_64
+        dest: /usr/local/bin/docker-compose
+        mode: 'u+x,g+x'
+
