@@ -15,7 +15,7 @@
         networks:
           - name: ghost_network
         volumes:
-          - ghosts/app:/var/www/html
+          - /home/team3-iac/ghosts/app:/var/www/html
         env:
           database__client: mysql
           database__connection__host: db
@@ -31,7 +31,7 @@
         networks:
           - name: ghost_network
         volumes:
-          - ghosts/db:/var/lib/mysql
+          - /home/team3-iac/ghosts/db:/var/lib/mysql
         env:
           MYSQL_RANDOM_ROOT_PASSWORD: "1"
           MYSQL_DATABASE: ghost
