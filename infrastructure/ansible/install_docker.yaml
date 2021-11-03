@@ -39,13 +39,13 @@
     - name: install python package manager
       apt:
         name:
-          - python
-          - python-pip
-          - python-setuptools
+          - python3
+          - python3-pip
+          - python3-setuptools
 
     - name: install python sdk
       become_user: team3-iac
-      pip:
+      pip3:
         name:
           - docker
           - docker-compose
