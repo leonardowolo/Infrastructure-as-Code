@@ -3,11 +3,11 @@
 
   tasks:
     - name: Create Ghost Network
-      community.docker.docker_network:
+      docker_network:
         name: ghost_network
 
     - name: Deploy Ghost App
-      community.docker.docker_containers:
+      docker_containers:
         name: ghost
         image: ghost:4-alpine
         ports:
@@ -25,7 +25,7 @@
         restart_policy: always
 
     - name: Deploy Ghost Db
-      community.docker.docker_containers:
+      docker_containers:
         name: db
         image: mysql:5.7
         networks:
