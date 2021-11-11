@@ -149,3 +149,5 @@ resource "local_file" "keyFile" {
   filename          = "/.ssh-key/webserver_key.pem"
   file_permission   = "0600"
 }
+
+
