@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Set Dir Path
+targetdir="/.ssh-key/"
+
+# Set the filename
+filename="webserver_key.pem"
+
+
+# Check the file is exists or not
+if [ -f "$targetdir$filename" ]; then
+   rm -f "$targetdir$filename"
+   echo "$filename is removed"
+fi
