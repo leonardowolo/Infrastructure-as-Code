@@ -119,7 +119,7 @@ resource "azurerm_linux_virtual_machine" "iac-webserver" {
   computer_name       = "iac-webserver"
   resource_group_name = azurerm_resource_group.IAC_Production.name
   location            = azurerm_resource_group.IAC_Production.location
-  size                = "Standard_B2s"
+  size                = "Standard_B1s"
   admin_username      = "team3-iac"
   disable_password_authentication = true
   network_interface_ids = [
