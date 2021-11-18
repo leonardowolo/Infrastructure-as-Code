@@ -114,9 +114,9 @@ resource "tls_private_key" "sshKey" {
 }
 
 # Configure Microsoft Azure virtual machine
-resource "azurerm_linux_virtual_machine" "webserver" {
-  name                = "webserver"
-  computer_name       = "webserver"
+resource "azurerm_linux_virtual_machine" "iac-webserver" {
+  name                = "iac-webserver"
+  computer_name       = "iac-webserver"
   resource_group_name = azurerm_resource_group.IAC_Production.name
   location            = azurerm_resource_group.IAC_Production.location
   size                = "Standard_B2s"
@@ -146,7 +146,7 @@ resource "azurerm_linux_virtual_machine" "webserver" {
 
 resource "local_file" "keyFile" {
   content           = tls_private_key.sshKey.private_key_pem
-  filename          = "/.ssh-key/webserver_key.pem"
+  filename          = "/.ssh-key/iac-webserver_key.pem"
   file_permission   = "0600"
 }
 
