@@ -29,24 +29,24 @@ resource "azurerm_resource_group" "IAC_Production" {
 }
 
 # Configure Microsoft Azure virtual network
-resource "azurerm_virtual_network" "vNetwork" {
-  name                = "vNetwork"
+resource "azurerm_virtual_network" "iac-vNetwork" {
+  name                = "iac-vNetwork"
   address_space       = ["10.0.0.0/16"]
   location            = azurerm_resource_group.IAC_Production.location
   resource_group_name = azurerm_resource_group.IAC_Production.name
 }
 
 # Configure Microsoft Azure subnet
-resource "azurerm_subnet" "iSubnet" {
-  name                 = "internal"
+resource "azurerm_subnet" "iac-iSubnet" {
+  name                 = "iac-internal"
   resource_group_name  = azurerm_resource_group.IAC_Production.name
-  virtual_network_name = azurerm_virtual_network.vNetwork.name
+  virtual_network_name = azurerm_virtual_network.iac-vNetwork.name
   address_prefixes     = ["10.0.2.0/24"]
 }
 
 # Configure Microsoft Azure Public Ip
-resource "azurerm_public_ip" "pIP" {
-  name                = "public"
+resource "azurerm_public_ip" "iac-pIP" {
+  name                = "iac-public"
   resource_group_name = azurerm_resource_group.IAC_Production.name
   location            = azurerm_resource_group.IAC_Production.location
   allocation_method   = "Dynamic"
@@ -54,22 +54,22 @@ resource "azurerm_public_ip" "pIP" {
 }
 
 # Configure Microsoft Azure network interface
-resource "azurerm_network_interface" "nInterface" {
-  name                = "nInterface"
+resource "azurerm_network_interface" "iac-nInterface" {
+  name                = "iac-nInterface"
   location            = azurerm_resource_group.IAC_Production.location
   resource_group_name = azurerm_resource_group.IAC_Production.name
 
   ip_configuration {
     name                          = "primary"
-    subnet_id                     = azurerm_subnet.iSubnet.id
+    subnet_id                     = azurerm_subnet.iac-iSubnet.id
     private_ip_address_allocation = "Dynamic"
-    public_ip_address_id          = azurerm_public_ip.pIP.id
+    public_ip_address_id          = azurerm_public_ip.iac-pIP.id
   }
 }
 
 # Configure Microsoft Azure security group
-resource "azurerm_network_security_group" "securityGroup" {
-  name                = "securityGroup"
+resource "azurerm_network_security_group" "iac-securityGroup" {
+  name                = "iac-securityGroup"
   location            = azurerm_resource_group.IAC_Production.location
   resource_group_name = azurerm_resource_group.IAC_Production.name
   security_rule {
@@ -108,7 +108,7 @@ resource "azurerm_network_security_group" "securityGroup" {
 }
 
 # Configure Microsoft Azure SSH Key
-resource "tls_private_key" "sshKey" {
+resource "tls_private_key" "iac-sshKey" {
   algorithm = "RSA"
   rsa_bits = 4096
 }
@@ -123,12 +123,12 @@ resource "azurerm_linux_virtual_machine" "iac-webserver" {
   admin_username      = "team3-iac"
   disable_password_authentication = true
   network_interface_ids = [
-    azurerm_network_interface.nInterface.id,
+    azurerm_network_interface.iac-nInterface.id,
   ]
 
   admin_ssh_key {
     username   = "team3-iac"
-    public_key = tls_private_key.sshKey.public_key_openssh
+    public_key = tls_private_key.iac-sshKey.public_key_openssh
   }
 
   os_disk {

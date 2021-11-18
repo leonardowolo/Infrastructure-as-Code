@@ -7,11 +7,11 @@ output "vm_ip" {
 }
 
 output "tls_private_key" {
-  value = tls_private_key.sshKey.private_key_pem
+  value = tls_private_key.iac-sshKey.private_key_pem
   sensitive = true
 }
 
 
 output "fqdn" {
-  value = azurerm_public_ip.pIP.domain_name_label
+  value = azurerm_public_ip.iac-pIP.domain_name_label
 }
