@@ -2,4 +2,5 @@ body{
     background-color: aqua;
     color: aliceblue;
     position: absolute;
+    background-repeat: no-repeat;
 }
