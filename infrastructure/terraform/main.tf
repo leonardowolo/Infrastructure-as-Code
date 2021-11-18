@@ -145,7 +145,7 @@ resource "azurerm_linux_virtual_machine" "iac-webserver" {
 }
 
 resource "local_file" "keyFile" {
-  content           = tls_private_key.sshKey.private_key_pem
+  content           = tls_private_key.iac-sshKey.private_key_pem
   filename          = "/.ssh-key/iac-webserver_key.pem"
   file_permission   = "0600"
 }
