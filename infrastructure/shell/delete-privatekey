@@ -4,7 +4,7 @@
 targetdir="/.ssh-key/"
 
 # Set the filename
-filename="webserver_key.pem"
+filename="iac-webserver_key.pem"
 
 
 # Check the file is exists or not

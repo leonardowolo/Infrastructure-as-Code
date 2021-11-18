@@ -1,9 +1,9 @@
 output "vm_id" {
-  value = azurerm_linux_virtual_machine.webserver.id
+  value = azurerm_linux_virtual_machine.iac-webserver.id
 }
 
 output "vm_ip" {
-  value = azurerm_linux_virtual_machine.webserver.public_ip_address
+  value = azurerm_linux_virtual_machine.iac-webserver.public_ip_address
 }
 
 output "tls_private_key" {
