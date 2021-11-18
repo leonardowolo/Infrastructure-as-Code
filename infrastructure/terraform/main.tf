@@ -50,7 +50,7 @@ resource "azurerm_public_ip" "iac-pIP" {
   resource_group_name = azurerm_resource_group.IAC_Production.name
   location            = azurerm_resource_group.IAC_Production.location
   allocation_method   = "Dynamic"
-  domain_name_label   = "team3-iac"
+  domain_name_label   = "iac-team3"
 }
 
 # Configure Microsoft Azure network interface
