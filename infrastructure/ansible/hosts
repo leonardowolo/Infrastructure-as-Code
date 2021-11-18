@@ -1,5 +1,5 @@
 [webservers]
-team3-iac.westeurope.cloudapp.azure.com
+iac-team3.westeurope.cloudapp.azure.com
 
 [webservers:vars]
 ansible_ssh_user=team3-iac
