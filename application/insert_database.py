@@ -33,7 +33,7 @@ def execute_query(connection, query):
 
 # Create artists table
 create_artists_table = """
-CREATE TABLE artist (
+CREATE TABLE artists (
   artist_id INT PRIMARY KEY,
   full_name VARCHAR(50) NOT NULL,
   genre VARCHAR(15) NOT NULL
@@ -43,7 +43,7 @@ CREATE TABLE artist (
 
 # Insert data into table
 pop_artists = """
-INSERT INTO artist VALUES
+INSERT INTO artists VALUES
 (1,  'James Smith', 'Rap'),
 (2, 'Stefanie Martin', 'R&B'),
 (3, 'Steve Wang', 'Jazz'),
@@ -55,7 +55,7 @@ INSERT INTO artist VALUES
 
 # Make connectionn with database server, create table & insert dummy data
 connection = create_server_connection('192.168.1.183', 'root', 'my-secret-pw', 'application')
-execute_query(connection, create_artist_table)
-execute_query(connection, pop_artist)
+execute_query(connection, create_artists_table)
+execute_query(connection, pop_artists)
 
 
