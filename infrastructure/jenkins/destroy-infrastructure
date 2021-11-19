@@ -31,14 +31,6 @@ pipeline{
              }
         }
 
-        stage('Waiting for Approval'){
-            steps {
-                timeout(time: 10, unit: 'MINUTES') {
-                    input (message: "Destroy the infrastructure?")
-                }
-            }
-
-        }
 
         stage('Terraform Destroy'){
             steps {
