@@ -105,6 +105,28 @@ resource "azurerm_network_security_group" "iac-securityGroup" {
     destination_port_range = "443"
     destination_address_prefix = "*"
   }
+  security_rule {
+    access                 = "Allow"
+    direction              = "Inbound"
+    name                   = "db-rule"
+    priority               = 106
+    protocol               = "Tcp"
+    source_port_range      = "*"
+    source_address_prefix  = "*"
+    destination_port_range = "3306"
+    destination_address_prefix = "*"
+  }
+  security_rule {
+    access                 = "Allow"
+    direction              = "Inbound"
+    name                   = "http-rule-php"
+    priority               = 107
+    protocol               = "Tcp"
+    source_port_range      = "*"
+    source_address_prefix  = "*"
+    destination_port_range = "8090"
+    destination_address_prefix = "*"
+  }
 }
 
 # Configure Microsoft Azure SSH Key

@@ -1,0 +1,44 @@
+pipeline {
+    agent { docker { image 'python:3.5.1' } }
+    stages {
+        stage('Install Pip3') {
+            steps {
+                ansiColor('xterm'){
+                    sh """
+                    sudo apt install python3-pip -y
+                    """
+                }
+            }
+        }
+
+        stage('Run Prelude - Python file') {
+            steps {
+                ansiColor('xterm'){
+                    sh """
+                    python3 infrastructure/python/prelude.py
+                     """
+                }
+            }
+        }
+
+        stage('Create Database - Python file') {
+            steps {
+                ansiColor('xterm'){
+                    sh """
+                    python3 infrastructure/python/create_database.py
+                     """
+                }
+            }
+        }
+
+        stage('Insert data in Database - Python file') {
+            steps {
+                ansiColor('xterm'){
+                    sh """
+                    python3 infrastructure/python/insert_database.py
+                     """
+                }
+            }
+        }
+    }
+}
