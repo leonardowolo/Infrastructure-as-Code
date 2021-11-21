@@ -36,8 +36,8 @@
       ansible.builtin.shell: sudo docker exec -it php docker-php-ext-install mysqli
 #
 #
-#    - name: Restat container
-#      ansible.builtin.shell: sudo docker restart php
+    - name: Restat container
+      ansible.builtin.shell: sudo docker restart php
 #
 #
 #    - name: Sleep for 30 seconds and continue with play
