@@ -17,12 +17,20 @@
     - name: Deploy PHP
       community.docker.docker_container:
         name: php
-        dockerfile: /home/team3-iac/application/html/Dockerfile
+        image: php:7-fpm
+        command: docker-php-ext-install mysqli
         networks:
           - name: app_network
         volumes:
           - /home/team3-iac/application/html:/var/www/html
         restart_policy: always
+
+
+    - name: Install mysqli extension on pphp
+      community.docker.docker_container_exec:
+        container: php
+        command: /bin/bash -c "docker-php-ext-install mysqli"
+        chdir: /root
 
 
     - name: Deploy Web Application
