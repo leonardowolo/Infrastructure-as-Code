@@ -26,24 +26,24 @@
         restart_policy: always
 
 
-    - name: Sleep for 25 seconds and continue with play
-      wait_for:
-        timeout: 25
-      delegate_to: localhost
-
-
-    - name: Install mysqli extension on php
-      ansible.builtin.shell: sudo docker exec php docker-php-ext-install mysqli
-
-
-    - name: Restat container
-      ansible.builtin.shell: sudo docker restart php
-
-
-    - name: Sleep for 30 seconds and continue with play
-      wait_for:
-        timeout: 30
-      delegate_to: localhost
+#    - name: Sleep for 25 seconds and continue with play
+#      wait_for:
+#        timeout: 25
+#      delegate_to: localhost
+#
+#
+#    - name: Install mysqli extension on php
+#      ansible.builtin.shell: sudo docker exec php docker-php-ext-install mysqli
+#
+#
+#    - name: Restat container
+#      ansible.builtin.shell: sudo docker restart php
+#
+#
+#    - name: Sleep for 30 seconds and continue with play
+#      wait_for:
+#        timeout: 30
+#      delegate_to: localhost
 
 
     - name: Deploy Web Application
