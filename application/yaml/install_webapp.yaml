@@ -14,6 +14,17 @@
         dest: /home/team3-iac/application/
 
 
+    - name: Deploy PHP
+      community.docker.docker_container:
+        name: php
+        image: php:7-fpm
+        networks:
+          - name: app_network
+        volumes:
+          - /home/team3-iac/application/html:/var/www/html
+        restart_policy: always
+
+
     - name: Deploy Web Application
       community.docker.docker_container:
         name: nginx
@@ -29,17 +40,6 @@
           - /home/team3-iac/application/html/site.conf:/etc/nginx/conf.d/site.conf
         env:
           url: http://iac-team3.westeurope.cloudapp.azure.com:80
-        restart_policy: always
-
-
-    - name: Deploy PHP
-      community.docker.docker_container:
-        name: php
-        image: php:7-fpm
-        networks:
-          - name: app_network
-        volumes:
-          - /home/team3-iac/application/html:/var/www/html
         restart_policy: always
 
 
