@@ -32,8 +32,8 @@
 #      delegate_to: localhost
 #
 #
-#    - name: Install mysqli extension on php
-#      ansible.builtin.shell: sudo docker exec php docker-php-ext-install mysqli
+    - name: Install mysqli extension on php
+      ansible.builtin.shell: sudo docker exec -it php docker-php-ext-install mysqli
 #
 #
 #    - name: Restat container
