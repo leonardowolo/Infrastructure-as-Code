@@ -24,7 +24,7 @@
 
     - name: Copy the files to new host
       copy:
-        src: /var/lib/jenkins/workspace/"8 - Run Python Scripts"/application/html
+        src: /var/lib/jenkins/workspace/8 - Run Python Scripts/application/html
         dest: /home/team3-iac/application/
 
 
