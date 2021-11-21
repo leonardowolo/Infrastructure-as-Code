@@ -18,7 +18,7 @@
       community.docker.docker_container:
         name: php
         image: php:7-fpm
-        command: docker-php-ext-install mysqli
+        #command: docker-php-ext-install mysqli
         networks:
           - name: app_network
         volumes:
