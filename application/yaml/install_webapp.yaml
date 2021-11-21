@@ -77,3 +77,4 @@
           PMA_USER: "root"
           PMA_PASSWORD: "example"
         restart_policy: always
+
