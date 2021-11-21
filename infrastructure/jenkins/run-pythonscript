@@ -40,15 +40,5 @@ pipeline {
                 }
             }
         }
-
-        stage('Restart PHP container') {
-            steps {
-                ansiColor('xterm'){
-                    sh """
-                    sudo docker container restart php
-                     """
-                }
-            }
-        }
     }
 }
