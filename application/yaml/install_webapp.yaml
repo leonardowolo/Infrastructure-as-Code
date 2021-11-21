@@ -7,6 +7,13 @@
       docker_network:
         name: app_network
 
+
+    - name: Copy the files to new host
+      copy:
+        src: /var/lib/jenkins/workspace/8 - Run Python Scripts/application/html
+        dest: /home/team3-iac/application/
+
+
     - name: Deploy Web Application
       community.docker.docker_container:
         name: nginx
@@ -20,12 +27,6 @@
         env:
           url: http://iac-team3.westeurope.cloudapp.azure.com:80
         restart_policy: always
-
-
-    - name: Copy the files to new host
-      copy:
-        src: /var/lib/jenkins/workspace/8 - Run Python Scripts/application/html
-        dest: /home/team3-iac/application/
 
 
     - name: Deploy Application Database
