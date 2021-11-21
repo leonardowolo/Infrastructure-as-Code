@@ -1,5 +1,5 @@
 body{
-    background-color: lightblue;
+    background-color: lightblue !important;
 }
 
 .container {
@@ -11,7 +11,7 @@ body{
 
 table td {
 	padding-top: 50px;
-    border-bottom: 5px solid #f1f1f1;
+    border-bottom: 10px solid #f1f1f1;
 }
 
 .button{
