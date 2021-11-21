@@ -58,7 +58,7 @@
           - php
         volumes:
           - /home/team3-iac/application/html:/var/www/html
-          - /home/team3-iac/application/html/site.conf:/etc/nginx/conf.d/default.conf
+          #- /home/team3-iac/application/html/site.conf:/etc/nginx/conf.d/default.conf
         env:
           url: http://iac-team3.westeurope.cloudapp.azure.com:80
         restart_policy: always
