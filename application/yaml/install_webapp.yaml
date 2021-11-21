@@ -26,9 +26,9 @@
         restart_policy: always
 
 
-    - name: Sleep for 30 seconds and continue with play
+    - name: Sleep for 25 seconds and continue with play
       wait_for:
-        timeout: 30
+        timeout: 25
       delegate_to: localhost
 
 
@@ -37,7 +37,7 @@
 
 
     - name: Restat container
-        command: sudo docker restart php
+      command: sudo docker restart php
 
 
     - name: Sleep for 30 seconds and continue with play
