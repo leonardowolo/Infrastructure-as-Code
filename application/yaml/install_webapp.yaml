@@ -1,0 +1,58 @@
+---
+- hosts: webservers
+  become: true
+
+  tasks:
+    - name: Create Application Network
+      docker_network:
+        name: app_network
+
+    - name: Deploy Web Application
+      community.docker.docker_container:
+        name: nginx
+        image: nginx
+        ports:
+          - "80:80"
+        networks:
+          - name: app_network
+        volumes:
+          - /home/team3-iac/application/html:/var/www/html
+        env:
+          url: http://iac-team3.westeurope.cloudapp.azure.com:80
+        restart_policy: always
+
+
+    - name: Deploy Application Database
+      community.docker.docker_container:
+        name: mariadb
+        image: mariadb:10.3
+        ports:
+          - "3306:3306"
+        networks:
+          - name: app_network
+        volumes:
+          - /home/team3-iac/application/mariadb:/var/lib/mysql
+        env:
+          MYSQL_ROOT_PASSWORD: example
+          MYSQL_USER: app-user
+          MYSQL_PASSWORD: example
+        restart_policy: always
+
+
+    - name: Deploy phpMyAdmin
+      community.docker.docker_container:
+        name: phpmyadmin
+        image: phpmyadmin
+        ports:
+          - "8090:80"
+        networks:
+          - name: app_network
+        links:
+          - mariadb
+        env:
+          PMA_ARBITRARY: "1"
+          PMA_HOST: "mariadb"
+          PMA_PORT: "3306"
+          PMA_USER: "root"
+          PMA_PASSWORD: "example"
+        restart_policy: always

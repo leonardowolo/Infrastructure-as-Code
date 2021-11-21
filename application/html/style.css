@@ -1,0 +1,24 @@
+body{
+    background-color: lightgray;
+}
+
+.container {
+	margin-left: 500px;
+	padding-top: 250px;
+}
+
+
+
+table td {
+	padding-top: 50px;
+    border-bottom: 5px solid #f1f1f1;
+}
+
+.button{
+	margin-left: 250px;
+	margin-top: 50px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 50px;
+	padding-right: 50px;
+}
