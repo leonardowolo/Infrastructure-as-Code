@@ -33,11 +33,11 @@
 
 
     - name: Install mysqli extension on php
-      command: sudo docker exec php docker-php-ext-install mysqli
+      ansible.builtin.shell: sudo docker exec php docker-php-ext-install mysqli
 
 
     - name: Restat container
-      command: sudo docker restart php
+      ansible.builtin.shell: sudo docker restart php
 
 
     - name: Sleep for 30 seconds and continue with play
