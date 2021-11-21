@@ -30,7 +30,7 @@
       community.docker.docker_container_exec:
         container: php
         command: /bin/bash -c "docker-php-ext-install mysqli"
-        chdir: /root
+        chdir: /
 
 
     - name: Deploy Web Application
