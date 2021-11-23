@@ -23,7 +23,7 @@
           database__connection__user: blog-user
           database__connection__password: example
           database__connection__database: ghost
-          url: http://team3-iac.westeurope.cloudapp.azure.com:80
+          url: http://iac-team3.westeurope.cloudapp.azure.com:80
         restart_policy: always
 
     - name: Deploy Ghost Db
