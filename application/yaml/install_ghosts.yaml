@@ -40,3 +40,21 @@
           MYSQL_USER: blog-user
           MYSQL_PASSWORD: example
         restart_policy: always
+
+    - name: Deploy phpMyAdmin
+      community.docker.docker_container:
+        name: phpmyadmin
+        image: phpmyadmin
+        ports:
+          - "8090:80"
+        networks:
+          - name: ghost_network
+        links:
+          - db
+        env:
+          PMA_ARBITRARY: "1"
+          PMA_HOST: "db"
+          PMA_PORT: "3306"
+          PMA_USER: "blog-user"
+          PMA_PASSWORD: "example"
+        restart_policy: always
